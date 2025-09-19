@@ -18,11 +18,17 @@ A secure crypto payment system that allows users to pay rent or make deposits us
 ### Install dependencies
 
 ```
-   npm install
+   yarn install
 ```
 
-### Run on localhost
+### Run Frontend
 
 ```
-   npm start
+   yarn fe
+```
+
+### Run Backend
+
+```
+   yarn be
 ```
