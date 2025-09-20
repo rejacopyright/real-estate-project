@@ -20,13 +20,14 @@ exports.getBalance = asyncErrorHandler(async (_req, res) => {
 // ====================================== BUY ITEM ======================================
 exports.buyItem = asyncErrorHandler(async (_req, res) => {
  try {
+  const price = ethers.parseEther('0.05');
   const provider = new ethers.JsonRpcProvider('http://localhost:8545');
   const BUYER_PRIVATE_KEY =
    '0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d';
   const BUYER_WALLET = new ethers.Wallet(BUYER_PRIVATE_KEY, provider);
   const tx = await contract
    .connect(BUYER_WALLET)
-   .buyItem({ value: ethers.parseEther('0.01') });
+   .buyItem(price, { value: price });
   const data = await tx.wait();
   res.status(200).json({ data, message: 'Item bought successfully' });
  } catch (error) {
